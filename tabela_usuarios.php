@@ -1,7 +1,7 @@
 <?php
     $mysqli = new mysqli ("localhost", "root", "root", "car_leasing");
         $sql = "SELECT id, nome, endereco, telefone, email, data_nascimento, tipo
-        FROM usuarios";
+        FROM usuarios where excluido = 0";
         $usuarios = $mysqli -> query($sql);
 ?>
 
@@ -103,7 +103,7 @@
 </head>
 <body>
 	<header>
-		<h1>Gerenciar Clientes</h1>
+		<h1>Gerenciamento de Usuarios</h1>
 	</header>
 	<div>
 		<a href="tela_admin.php">
@@ -113,7 +113,6 @@
 	<table>
 	<thead>
 		<tr>
-			<th>Id</th>
 			<th>Nome</th>
 			<th>Endereço</th>
 			<th>Telefone</th>
@@ -127,7 +126,6 @@
 	<?php while ($linha = $usuarios->fetch_assoc()) { ?>
 	<tr>
 	<tr>
-    <td><?php echo $linha['id']; ?></td>
     <td><?php echo $linha['nome']; ?></td>
     <td><?php echo $linha['endereco']; ?></td>
     <td><?php echo $linha['telefone']; ?></td>
@@ -135,8 +133,11 @@
     <td><?php echo $linha['data_nascimento']; ?></td>
     <td><?php echo $linha['tipo']; ?></td>
     <td>
-        <a href="editar.php?id=<?php echo $linha['id']; ?>&nome=<?php echo $linha['nome']; ?>&endereco=<?php echo $linha['endereco']; ?>&telefone=<?php echo $linha['telefone']; ?>&email=<?php echo $linha['email']; ?>&data_nascimento=<?php echo $linha['data_nascimento']; ?>&tipo=<?php echo $linha['tipo']; ?>"  style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px;">Editar</a>
-    </td>
+        <a href="editar_usuarios.php?id=<?php echo $linha['id']; ?>&nome=<?php echo $linha['nome']; ?>&endereco=<?php echo $linha['endereco']; ?>&telefone=<?php echo $linha['telefone']; ?>&email=<?php echo $linha['email']; ?>&data_nascimento=<?php echo $linha['data_nascimento']; ?>&tipo=<?php echo $linha['tipo']; ?>"  style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Editar</a>
+    
+				<a href="excluir_usuarios.php?id=<?php echo $linha['id']; ?>&nome=<?php echo $linha['nome']; ?>&endereco=<?php echo $linha['endereco']; ?>&telefone=<?php echo $linha['telefone']; ?>&email=<?php echo $linha['email']; ?>&data_nascimento=<?php echo $linha['data_nascimento']; ?>&tipo=<?php echo $linha['tipo']; ?>"  style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Exluir</a>
+
+		</td>
 </tr>
 <?php } ?>
 	</tbody>

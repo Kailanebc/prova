@@ -106,7 +106,7 @@
 	<nav>
 		<ul>
 			<li><a href="tela_cadastro-admin.php">Cadastrar</a></li>
-			<li><a href="tabela_clientes.php">Clientes</a></li>
+			<li><a href="tabela_usuarios.php">Gerenciamento de Usuarios</a></li>
 			<li><a href="#">Carros</a></li>
 			<li><a href="#">Reservas</a></li>
 			<li><a href="#">Pagamentos</a></li>

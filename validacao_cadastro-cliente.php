@@ -1,7 +1,8 @@
 <?php
 
     if ($_POST['password'] !== $_POST['password_repeat']) {
-        echo "Deu ruim a senha";
+        $erro = "Senhas Diferentes.";
+        header("Location: tela_cadastro-cliente.php?erro=" . urlencode($erro));
     }else{
         $nome = $_POST['nome'];
         $endereco = $_POST['endereco'];
@@ -13,8 +14,8 @@
 
         $mysqli = new mysqli("localhost", "root", "root", "car_leasing");
         $sql = "INSERT INTO `usuarios`(`nome`, `endereco`, `telefone`, `email`, `data_nascimento`, `senha`, `tipo`) VALUES ('".$nome."', '".$endereco."', '".$telefone."','".$email."', '".$data_nascimento."','".$senha."', '".$tipo."')";
-    }
 
-    echo $sql;
+        header('Location: index.php');
+    }
     $mysqli->query($sql);
 ?>

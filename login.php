@@ -5,7 +5,7 @@
     $mysqli = new mysqli ("localhost", "root", "root", "car_leasing");
     $usuarios = $mysqli->query(
         "SELECT * FROM `usuarios` WHERE nome='{$_POST['username']}' 
-        AND senha='{$senha_criptografada}' AND tipo='{$tipo_usuario}'");
+        AND senha='{$senha_criptografada}' AND tipo='{$tipo_usuario}' AND excluido = 0");
 
     return $usuarios->fetch_assoc();
 }

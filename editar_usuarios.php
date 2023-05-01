@@ -23,17 +23,17 @@ if (isset($_GET['id'])) {
 			$sql->query("UPDATE usuarios SET nome = '$nome', endereco = '$endereco', telefone = '$telefone', email = '$email', data_nascimento = '$data_nascimento', tipo = '$tipo' WHERE id = $id");
 
 			// Redireciona de volta para a página de tabela_clientes
-			header('Location: tabela_clientes');
+			header('Location: tabela_usuarios.php');
 			exit;
 		}
 	} else {
 		// Se não houver um usuário correspondente ao ID, redireciona para a página de tabela_clientes
-		header('Location: tabela_clientes');
+		header('Location: tabela_usuarios.php');
 		exit;
 	}
 } else {
 	// Se o ID do usuário não foi passado na URL, redireciona para a página de tabela_clientes
-	header('Location: tabela_clientes.php');
+	header('Location: tabela_usuarios.php');
 	exit;
 }
 ?>
@@ -141,7 +141,7 @@ if (isset($_GET['id'])) {
 
 		<input type="submit" name="submit" value="Atualizar">
 		<br></br>
-    <a href="tabela_clientes.php">
+    <a href="tabela_usuarios.php">
       Voltar
     </a>
 	</form>

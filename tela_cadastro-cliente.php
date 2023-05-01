@@ -33,6 +33,7 @@
 		}
 
 		input[type="text"],
+		input[type="date"],
 		input[type="email"],
 		input[type="password"],
 		select {
@@ -76,7 +77,7 @@
 </head>
 <body>
 	<h1>Cadastro</h1>
-	<form method="POST" action="validacao_cadastro.php">
+	<form method="POST" action="validacao_cadastro-cliente.php">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" id="nome" required placeholder="Digite seu nome"><br><br>
     <label for="endereco">Endereço:</label>
@@ -101,6 +102,12 @@
     <a href="index.php">
       Voltar
     </a>
+		<?php
+			if(isset($_GET['erro'])){
+				$erro = $_GET['erro'];
+				echo '<p style="color: red;">' . $erro . '</p>';
+		}
+		?>
 	</form>
 </body>
 </html>
