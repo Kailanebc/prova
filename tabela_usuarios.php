@@ -133,7 +133,7 @@
     <td><?php echo $linha['data_nascimento']; ?></td>
     <td><?php echo $linha['tipo']; ?></td>
     <td>
-        <a href="editar_usuarios.php?id=<?php echo $linha['id']; ?>&nome=<?php echo $linha['nome']; ?>&endereco=<?php echo $linha['endereco']; ?>&telefone=<?php echo $linha['telefone']; ?>&email=<?php echo $linha['email']; ?>&data_nascimento=<?php echo $linha['data_nascimento']; ?>&tipo=<?php echo $linha['tipo']; ?>"  style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Editar</a>
+        <a href="editar_usuarios.php?id=<?php echo $linha['id']; ?>" style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Editar</a>
     
 				<a href="excluir_usuarios.php?id=<?php echo $linha['id']; ?>&nome=<?php echo $linha['nome']; ?>&endereco=<?php echo $linha['endereco']; ?>&telefone=<?php echo $linha['telefone']; ?>&email=<?php echo $linha['email']; ?>&data_nascimento=<?php echo $linha['data_nascimento']; ?>&tipo=<?php echo $linha['tipo']; ?>"  style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Exluir</a>
 

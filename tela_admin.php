@@ -101,13 +101,13 @@
 <body>
 	<header>
 		<h1>Painel do Administrador</h1>
-		<a href="index.php">Sair</a>
+		<a href="index.php?logout">Sair</a>
 	</header>
 	<nav>
 		<ul>
 			<li><a href="tela_cadastro-admin.php">Cadastrar</a></li>
 			<li><a href="tabela_usuarios.php">Gerenciamento de Usuarios</a></li>
-			<li><a href="#">Carros</a></li>
+			<li><a href="tabela_carros.php">Carros</a></li>
 			<li><a href="#">Reservas</a></li>
 			<li><a href="#">Pagamentos</a></li>
 		</ul>
