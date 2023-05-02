@@ -1,6 +1,6 @@
 <?php
     $mysqli = new mysqli ("localhost", "root", "root", "car_leasing");
-        $sql = "SELECT r.data_inicio, r.data_fim, u.nome, c.modelo 
+        $sql = "SELECT r.* , u.nome, c.modelo 
         FROM reservas r INNER JOIN usuarios u ON r.id_usuario = u.id 
         INNER JOIN carros c ON r.carro_id = c.id WHERE r.excluido = 0;";
         $reservas = $mysqli -> query($sql);

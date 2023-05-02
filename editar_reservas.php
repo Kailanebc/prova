@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
   // Conecta ao banco de dados e faz a consulta da reserva correspondente ao ID
   $sql = new mysqli('localhost', 'root', 'root', 'car_leasing');
 
-  $consulta = $sql->query("SELECT r.data_inicio, r.data_fim, r.id_usuario, r.carro_id, u.nome, c.modelo 
+  $consulta = $sql->query("SELECT r.*, u.nome, c.modelo 
                               FROM reservas r 
                               INNER JOIN usuarios u ON r.id_usuario = u.id 
                               INNER JOIN carros c ON r.carro_id = c.id
@@ -31,17 +31,8 @@ if (isset($_GET['id'])) {
     }
 
     // Faz a consulta de usuários e carros para preencher as opções do formulário
-    if ($usuarios->num_rows == 1) {
-			$row_usuario = $usuarios->fetch_assoc();
       $usuarios = $sql->query("SELECT * FROM usuarios");
-    } else {
-      echo "Reserva não encontrada."; }
-
-      if ($carros->num_rows == 1) {
-        $row_carros = $carros->fetch_assoc();
-        $carros = $sql->query("SELECT * FROM carros");
-      } else {
-        echo "Reserva não encontrada.";}
+	  $carros = $sql->query("SELECT * FROM carros");
 
   // Fecha a conexão com o banco de dados
   $sql->close();
