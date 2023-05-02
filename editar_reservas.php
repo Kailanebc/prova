@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
 	<style>
 
 		body {
-			<!-- background-image: url("https://quatrorodas.abril.com.br/wp-content/uploads/2020/03/renault-city_k-ze-2020-1600-02.jpg-e1585150040984.jpg?quality=70&strip=info&w=1280&h=720&crop=1"); -->
+			background-image: url("https://quatrorodas.abril.com.br/wp-content/uploads/2020/03/renault-city_k-ze-2020-1600-02.jpg-e1585150040984.jpg?quality=70&strip=info&w=1280&h=720&crop=1");
 			background-size: cover;
 			font-family: Arial, sans-serif;
 			font-size: 16px;
