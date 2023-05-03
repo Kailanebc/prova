@@ -32,6 +32,11 @@ if (isset($_GET['id'])) {
 
     // Faz a consulta de usuários e carros para preencher as opções do formulário
       $usuarios = $sql->query("SELECT * FROM usuarios");
+    } else {
+      echo "Reserva não encontrada."; }
+
+      if ($carros->num_rows == 1) {
+        $row_carros = $carros->fetch_assoc();
         $carros = $sql->query("SELECT * FROM carros");
       } else {
         echo "Reserva não encontrada.";}
