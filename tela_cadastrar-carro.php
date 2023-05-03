@@ -1,3 +1,12 @@
+<?php
+
+$sql = new mysqli('localhost', 'root', 'root', 'car_leasing');
+
+$tipo_carro = $sql->query("SELECT * FROM tipo_carro");
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +87,7 @@
 <body>
 	<h1>Cadastrar Carro</h1>
   <div>
-	<form method="POST" action="carro_validacao-cadastro.php">
+	<form method="POST" action="cadastro-carro.php">
     <label for="modelo">Nome:</label>
     <input type="text" name="modelo" id="modelo" required placeholder="Digite o modelo do Carro"><br><br>
     <label for="ano">Ano:</label>
@@ -99,21 +108,13 @@
     <input type="date" name="revisao" id="revisao" required placeholder="Selecione a data da revisão"><br><br>
 		<label for="km_rodados">km/Rodados:</label>
     <input type="text" name="km_rodados" id="km_rodados" required placeholder="Digite o km/Rodados do carro"><br><br>
-		<label for="tipo">Selecione um tipo de carro:</label>
-            <select id="tipo" name="tipo">
-                <option value= "" >Selecione</option>
-                <option value= 1 >Sedan</option>
-                <option value= 2 >Hatch</option>
-                <option value= 3 >SUV Viva</option>
-                <option value= 4 >Picape</option>
-                <option value= 5 >Esportivo</option>
-                <option value= 6 >Compacto</option>
-                <option value= 7 >Luxo</option>
-                <option value= 8 >Utilitário</option>
-                <option value= 9 >Van</option>
-                <option value= 10 >Conversível</option>
-            </select>
-            <br></br>
+		<label for="tipo">Selecione o tipo de Carro:</label>
+		<select name="tipo" id="tipo" required>
+		<?php while ($tipo_carro_opcao = $tipo_carro->fetch_assoc()) { ?>
+			<option value="<?php echo $tipo_carro_opcao['id']; ?>" ><?php echo $tipo_carro_opcao['nome']; ?></option>
+		<?php } ?>
+        </select>
+				<br></br>
 		<input type="submit" value="Cadastrar">
     <br></br>
     <a href="tabela_carros.php">

@@ -12,8 +12,8 @@
       $mysqli = new mysqli("localhost", "root", "root", "car_leasing");
       $sql = "INSERT INTO `carros`(`modelo`, `ano`, `cor`, `placa`, `status`, `preco_dia`, `revisao`, `km_rodados`, `id_tipo_carro`) VALUES ('".$modelo."', '".$ano."', '".$cor."','".$placa."', '".$status."','".$preco_dia."', '".$revisao."' , '".$km_rodados."' , '".$id_tipo_carro."')";
 
-      header('Location: tabela_carros.php');
+			$mysqli->query($sql);
 
-      $mysqli->query($sql);
+      header('Location: tabela_carros.php');
 
 ?>

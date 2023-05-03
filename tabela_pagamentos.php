@@ -1,9 +1,12 @@
 <?php
     $mysqli = new mysqli ("localhost", "root", "root", "car_leasing");
-        $sql = "SELECT c.modelo, c.ano, c.cor, c.placa, c.status, c.preco_dia, c.revisao, c.km_rodados, tc.nome 'tipo', c.id, tc.faixa_valor
-				FROM carros c 
-				INNER JOIN tipo_carro tc ON c.id_tipo_carro = tc.id where excluido = 0";
-        $carros = $mysqli -> query($sql);
+        $sql = "SELECT pagamentos.data 'data_pagamento', alugueis.data_inicio, alugueis.data_fim, pagamentos.valor,
+        carros.modelo, usuarios.nome, usuarios.data_nascimento
+        FROM pagamentos
+        INNER JOIN alugueis ON pagamentos.aluguel_id = alugueis.id
+        INNER JOIN carros ON alugueis.carro_id = carros.id
+        INNER JOIN usuarios ON alugueis.id_usuario = usuarios.id;";
+        $pagamentos = $mysqli -> query($sql);
 ?>
 
 
@@ -100,7 +103,7 @@
 </head>
 <body>
 	<header>
-		<h1>Gerenciamento de Carros</h1>
+		<h1>Gerenciamento de Pagamentos</h1>
 	</header>
 	<div>
 		<a href="tela_admin.php">
@@ -111,40 +114,30 @@
   <table style="width: 90%; background-color: #fff; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); border-radius: 10px;">
     <thead>
       <tr>
-        <th>Modelo</th>
-        <th>Ano</th>
-        <th>Cor</th>
-        <th>Placa</th>
-        <th>Status</th>
-        <th>Preço/Dia</th>
-        <th>Revisão</th>
-        <th>Km/Rodados</th>
-        <th>Tipo de Carro</th>
-        <th>Opção</th>
+        <th>Nome do Usuario</th>
+        <th>Data de Nascimento</th>
+        <th>Data de Pagamento</th>
+        <th>Data de Locação</th>
+        <th>Data de Devolução</th>
+        <th>Modelo do Carro</th>
+        <th>Valor</th>
       </tr>
     </thead>
     <tbody>
-      <?php while ($linha = $carros->fetch_assoc()) { ?>
+      <?php while ($linha = $pagamentos->fetch_assoc()) { ?>
         <tr>
+          <td><?php echo $linha['nome']; ?></td>
+          <td><?php echo $linha['data_nascimento']; ?></td>
+          <td><?php echo $linha['data_pagamento']; ?></td>
+          <td><?php echo $linha['data_inicio']; ?></td>
+          <td><?php echo $linha['data_fim']; ?></td>
           <td><?php echo $linha['modelo']; ?></td>
-          <td><?php echo $linha['ano']; ?></td>
-          <td><?php echo $linha['cor']; ?></td>
-          <td><?php echo $linha['placa']; ?></td>
-          <td><?php echo $linha['status']; ?></td>
-          <td><?php echo $linha['preco_dia']; ?></td>
-          <td><?php echo $linha['revisao']; ?></td>
-          <td><?php echo $linha['km_rodados']; ?></td>
-          <td><?php echo $linha['tipo']; ?></td>
-          <td>
-            <a href="editar_carros.php?id=<?php echo $linha['id']; ?>" style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Editar</a>
-
-            <a href="excluir_carros.php?id=<?php echo $linha['id']; ?>" style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Excluir</a>
-          </td>
+          <td><?php echo $linha['valor']; ?></td>
         </tr>
       <?php } ?>
     </tbody>
   </table>
-  <a href="tela_cadastrar-carro.php" style="background-color: #333; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 20px; display: block; width: 80px; text-align: center;">Cadastrar</a>
+  <a href="tela_cadastrar-pagamentos.php" style="background-color: #333; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 20px; display: block; width: 80px; text-align: center;">Cadastrar</a>
 </div>
 </div>
 </body>

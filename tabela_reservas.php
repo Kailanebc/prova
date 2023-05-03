@@ -1,6 +1,6 @@
 <?php
     $mysqli = new mysqli ("localhost", "root", "root", "car_leasing");
-        $sql = "SELECT r.data_inicio, r.data_fim, u.nome, c.modelo 
+        $sql = "SELECT r.*, u.nome, c.modelo 
         FROM reservas r INNER JOIN usuarios u ON r.id_usuario = u.id 
         INNER JOIN carros c ON r.carro_id = c.id WHERE r.excluido = 0;";
         $reservas = $mysqli -> query($sql);
@@ -100,7 +100,7 @@
 </head>
 <body>
 	<header>
-		<h1>Gerenciamento de Carros</h1>
+		<h1>Gerenciamento de Reservas</h1>
 	</header>
 	<div>
 		<a href="tela_admin.php">
@@ -127,14 +127,12 @@
           <td><?php echo $linha['modelo']; ?></td>
           <td>
             <a href="editar_reservas.php?id=<?php echo $linha['id']; ?>" style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Editar</a>
-<!-- 
-            <a href="excluir_reservas.php?id=<?php echo $linha['id']; ?>" style="color: white; text-decoration: none; padding: 5px 10px; border: 1px solid blue; border-radius: 5px; cursor: pointer;">Excluir</a> -->
           </td>
         </tr>
       <?php } ?>
     </tbody>
   </table>
-  <!-- <a href="cadastrar_reserva.php" style="background-color: #333; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 20px; display: block; width: 80px; text-align: center;">Cadastrar</a> -->
+  <a href="tela_cadastrar-reserva.php" style="background-color: #333; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 20px; display: block; width: 80px; text-align: center;">Cadastrar</a>
 </div>
 </div>
 </body>

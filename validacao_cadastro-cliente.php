@@ -15,7 +15,7 @@
         $mysqli = new mysqli("localhost", "root", "root", "car_leasing");
         $sql = "INSERT INTO `usuarios`(`nome`, `endereco`, `telefone`, `email`, `data_nascimento`, `senha`, `tipo`) VALUES ('".$nome."', '".$endereco."', '".$telefone."','".$email."', '".$data_nascimento."','".$senha."', '".$tipo."')";
 
+        $mysqli->query($sql);
         header('Location: index.php');
     }
-    $mysqli->query($sql);
 ?>

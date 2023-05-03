@@ -109,7 +109,7 @@
 			<li><a href="tabela_usuarios.php">Gerenciamento de Usuarios</a></li>
 			<li><a href="tabela_carros.php">Carros</a></li>
 			<li><a href="tabela_reservas.php">Reservas</a></li>
-			<li><a href="#">Pagamentos</a></li>
+			<li><a href="tabela_pagamentos.php">Pagamentos</a></li>
 		</ul>
 	</nav>
 	<main>
